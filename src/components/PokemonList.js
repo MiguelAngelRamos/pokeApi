@@ -7,6 +7,7 @@ const PokemonList = ({ pokemons }) => {
   return (
     <FlatList
       data={pokemons}
+      numColumns={2}
       keyExtractor={(pokemon) => pokemon.id.toString()}
       renderItem={({item}) => <PokemonCard pokemon={item} />} 
     />

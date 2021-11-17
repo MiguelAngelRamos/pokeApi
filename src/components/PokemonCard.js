@@ -8,7 +8,7 @@ const PokemonCard = ({ pokemon }) => {
   // console.log(pokemonColor);
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles}
   return (
-    <TouchableWithoutFeedback>
+    <TouchableWithoutFeedback >
       <View style={styles.card}>
         <View style={styles.spacing}>
           <View style={bgStyles}>
