@@ -19,9 +19,9 @@ const PokedexScreen = () => {
       const pokemonsArray = []; // los pokemones con los detalles
 
       for await ( const pokemon of response.results ) {
-        console.log(pokemon.url)
+        // console.log(pokemon.url)
         const pokemonDetails = await getPokemonDetailsByUrlApi(pokemon.url);
-        console.log(pokemonDetails)
+        // console.log(pokemonDetails)
 
         // crear un objeto con las propiedades que nos interesan
         pokemonsArray.push({
@@ -43,7 +43,11 @@ const PokedexScreen = () => {
 
   return (
     <View>
-      <PokemonList pokemons={pokemons}/>
+      <PokemonList 
+        pokemons={pokemons}
+        loadPokemons={loadPokemons}
+        isNext={nextUrl}
+        />
     </View>
   )
 }

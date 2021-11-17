@@ -1,19 +1,27 @@
 import React from 'react';
 import { StyleSheet, Text, View, Image, TouchableWithoutFeedback } from 'react-native';
+import { capitalize } from 'lodash';
 import getColorByPokemonType from '../utils/getColorByPokemonType';
+import { useNavigation } from '@react-navigation/native';
 
 const PokemonCard = ({ pokemon }) => {
-
+  const navigation = useNavigation();
   const pokemonColor = getColorByPokemonType(pokemon.type);
   // console.log(pokemonColor);
+
   const bgStyles = { backgroundColor: pokemonColor, ...styles.bgStyles}
+  // TouchableWithoutFeedBack todos los elementos que responden al feeback deben tener una respuesta visual cuando se tocan
+
+  const goToPokemon = () => {
+    navigation.navigate("OnePokemon", {id: pokemon.id})
+  }
   return (
-    <TouchableWithoutFeedback >
+    <TouchableWithoutFeedback onPress={goToPokemon}>
       <View style={styles.card}>
         <View style={styles.spacing}>
           <View style={bgStyles}>
             <Text style={styles.number}>#{`${pokemon.order}`.padStart(3, 0)}</Text>
-            <Text style={styles.name}>{pokemon.name}</Text>
+            <Text style={styles.name}>{capitalize(pokemon.name)}</Text>
             <Image 
               source={{uri: pokemon.image}}
               style={styles.image}
@@ -42,6 +50,7 @@ const styles = StyleSheet.create({
     padding: 10
   },
   number: {
+    color: '#FFF',
     position: "absolute",
     right: 10,
     top: 10,
