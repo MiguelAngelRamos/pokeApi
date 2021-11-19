@@ -2,17 +2,19 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 import { useFormik } from 'formik'; // sirve para manejar el estado formulario
 import * as Yup from "yup"; // para las validaciones
+import { userDB, userDetails } from '../../utils/userDB';
 
 const LoginForm = () => {
   const [error, setError] = useState("");
+
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
+    validateOnChange: false,
     onSubmit: (formValue) => {
       // console.log(formValue);
       const { username, password } = formValue;
-      console.log(username);
-      console.log(password)
+      (username !== userDB.username || password !== userDB.password)? setError('credenciales incorrectas') : console.log('login correcto');
     }
   })
   return (
@@ -41,8 +43,9 @@ const LoginForm = () => {
 
       <Text style={styles.error}>{formik.errors.username}</Text>
       <Text style={styles.error}>{formik.errors.password}</Text>
+
       {/* credenciales ambas son incorrectas */}
-      <Text style={styles.error}></Text>
+      <Text style={styles.error}>{error}</Text>
     </View>
   )
 }
