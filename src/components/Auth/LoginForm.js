@@ -4,9 +4,12 @@ import { useFormik } from 'formik'; // sirve para manejar el estado formulario
 import * as Yup from "yup"; // para las validaciones
 import { userDB, userDetails } from '../../utils/userDB';
 
+import useAuth from '../../hooks/useAuth';
+
 const LoginForm = () => {
   const [error, setError] = useState("");
-
+  console.log(useAuth());
+  const { login } = useAuth();
   const formik = useFormik({
     initialValues: initialValues(),
     validationSchema: Yup.object(validationSchema()),
@@ -14,7 +17,7 @@ const LoginForm = () => {
     onSubmit: (formValue) => {
       // console.log(formValue);
       const { username, password } = formValue;
-      (username !== userDB.username || password !== userDB.password)? setError('credenciales incorrectas') : console.log('login correcto');
+      (username !== userDB.username || password !== userDB.password)? setError('credenciales incorrectas') : login(userDetails);
     }
   })
   return (

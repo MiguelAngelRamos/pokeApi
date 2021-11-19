@@ -4,6 +4,7 @@ export const userDB = {
   password: "123456"
 }
 
+// retornar la informacion del perfil usuario
 export const userDetails = {
   username: "Miguel",
   firstName: "Miguel",
