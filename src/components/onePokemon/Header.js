@@ -10,7 +10,7 @@ const Header = ({ name, order, image, type }) => {
 
   return (
     <>
-      <View style={bgStyle}>
+      <View style={bgStyle} />
         <SafeAreaView style={styles.content}>
           <View style={styles.header}>
             <Text style={styles.name}>{capitalize(name)}</Text>
@@ -21,7 +21,7 @@ const Header = ({ name, order, image, type }) => {
             <Image source={{ uri: image }} style={styles.image} />
           </View>
         </SafeAreaView>
-      </View>
+      
     </>
   )
 }
@@ -32,10 +32,10 @@ const styles = StyleSheet.create({
   bg: {
     width: '100%',
     height: 400,
-    // position: 'absolute',
+    position: 'absolute',
     borderBottomEndRadius: 300,
     borderBottomLeftRadius: 300,
-    // transform: [{ scaleX: 2}]
+    transform: [{ scaleX: 2}]
   },
   contentImg: {
     flexDirection: 'row',

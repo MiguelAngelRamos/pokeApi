@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { ScrollView } from 'react-native';
 import { getPokemonDetailByIdApi } from '../api/pokemonApi';
-import { View, Text } from 'react-native';
 import TypePokemon from '../components/onePokemon/TypePokemon';
 import Stats from '../components/onePokemon/Stats';
 import Header from '../components/onePokemon/Header';
@@ -41,7 +40,7 @@ const OnePokemonScreen = ( props ) => {
       {/* Componente type PokemonCard */}
       <TypePokemon types={pokemon.types} />
       {/* Componente Stats */}
-      <Stats />
+      <Stats stats={pokemon.stats} />
     </ScrollView>
   )
 }
