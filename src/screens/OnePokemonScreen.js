@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { ScrollView } from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome5';
 import { getPokemonDetailByIdApi } from '../api/pokemonApi';
 import TypePokemon from '../components/onePokemon/TypePokemon';
 import Stats from '../components/onePokemon/Stats';
@@ -11,6 +12,13 @@ const OnePokemonScreen = ( props ) => {
   const { navigation, route: { params } } = props;
   // console.log(params.id);
   const [pokemon, setPokemon] = useState(null);
+
+  useEffect( () => {
+    navigation.setOptions({
+      headerRight: () => null,
+      headerLeft: () => <Icon name="arrow-left" color='#fff' size={20} style={{ marginLeft: 20}} onPress={navigation.goBack}/>
+    })
+  }, [navigation, params]) // cada vez que cambie el navigation y los parametros
 
   useEffect( ()=> {
     ( async()=> {

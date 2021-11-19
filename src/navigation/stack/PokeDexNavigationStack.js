@@ -10,7 +10,7 @@ const PokeDexNavigationStack = () => {
       <Stack.Screen 
       name="Pokedex" 
       component={PokedexScreen}
-      options={{title: "Pokedex"}}
+      options={{title: "", headerTransparent: true }}
       />
       <Stack.Screen
         name="OnePokemon"
