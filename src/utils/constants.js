@@ -20,3 +20,6 @@ export const POKEMON_TYPE_COLORS = {
   dark: "#705848",
   fairy: "#EE99AC",
 };
+
+// El espacio de nombre que vamos a reservar en el Storage
+export const FAVORITE_STORAGE = "favoritos";

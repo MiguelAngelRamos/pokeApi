@@ -5,6 +5,8 @@ import { getPokemonDetailByIdApi } from '../api/pokemonApi';
 import TypePokemon from '../components/onePokemon/TypePokemon';
 import Stats from '../components/onePokemon/Stats';
 import Header from '../components/onePokemon/Header';
+import FavoritePokemon from '../components/onePokemon/FavoritePokemon';
+import useAuth from '../hooks/useAuth';
 
 
 const OnePokemonScreen = ( props ) => {
@@ -13,12 +15,14 @@ const OnePokemonScreen = ( props ) => {
   // console.log(params.id);
   const [pokemon, setPokemon] = useState(null);
 
+  const { auth } = useAuth();
+
   useEffect( () => {
     navigation.setOptions({
-      headerRight: () => null,
+      headerRight: () => auth && <FavoritePokemon id={pokemon?.id} />,
       headerLeft: () => <Icon name="arrow-left" color='#fff' size={20} style={{ marginLeft: 20}} onPress={navigation.goBack}/>
     })
-  }, [navigation, params]) // cada vez que cambie el navigation y los parametros
+  }, [navigation, params, pokemon]) // cada vez que cambie el navigation y los parametros
 
   useEffect( ()=> {
     ( async()=> {
